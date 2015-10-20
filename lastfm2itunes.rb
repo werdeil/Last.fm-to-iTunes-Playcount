@@ -60,7 +60,7 @@ rescue
     puts "Getting listening data for week of #{time.year}-#{time.month}-#{time.day}"
     sleep 0.1
     begin
-      Nokogiri::HTML(open("http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart.xml&user=#{username}&api_key=e38cc7822bd7476fe4083e36ee69748e&from=#{from}&to=#{to}")).search('weeklytrackchart').search('track').each do |track|
+      Nokogiri::HTML(open("http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart&user=#{username}&api_key=e38cc7822bd7476fe4083e36ee69748e&from=#{from}&to=#{to}")).search('weeklytrackchart').search('track').each do |track|
         artist = filter_name(track.search('artist').first.content)
         name = filter_name(track.search('name').first.content)
         playcounts[artist] ||= {}
